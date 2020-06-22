@@ -11,7 +11,7 @@
  * - returns the name of the channel
  ****************************************************************/
 function getChannelName(channel) {
-  // Your code here
+  return channel.name;
 }
 
 /**************************************************************
@@ -20,7 +20,7 @@ function getChannelName(channel) {
  * - returns the number of videos that channel has
  ****************************************************************/
 function numberOfVideos(channel) {
-  // Your code here
+  return channel.videos.length;
 }
 
 /**************************************************************
@@ -33,7 +33,14 @@ function numberOfVideos(channel) {
  * BONUS: use iteration method `.some()`
  ****************************************************************/
 function channelHasVideo(videoTitle, channel) {
-  // Your code here
+  let i = 0;
+  for (i = 0; i < channel.videos.length; i++) {
+    if (channel.videos[i].title.includes(videoTitle)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 /**************************************************************
@@ -45,7 +52,14 @@ function channelHasVideo(videoTitle, channel) {
  * BONUS: use iteration method `.find()`
  ****************************************************************/
 function getChannelByName(channelName, channels) {
-  // Your code here
+  let i = 0;
+  for (i = 0; i < channels.length; i++) {
+    if (channels[i].name === channelName) {
+      return channels[i];
+    } else {
+      return undefined;
+    }
+  }
 }
 
 /**************************************************************
@@ -57,7 +71,15 @@ function getChannelByName(channelName, channels) {
  * BONUS: use iteration methods `.find()` and `.some()`
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
-  // Your code here
+  for (let i = 0; i < channels.length; i++) {
+    for (let j = 0; j < channels[i].videos.length; j++) {
+      if (channels[i].videos[j].title.includes(videoTitle)) {
+        return channels[i];
+      } else {
+        return undefined;
+      }
+    }
+  }
 }
 
 /**************************************************************
@@ -80,7 +102,11 @@ function searchChannels(query, channels) {
  * BONUS: use iteration method `.reduce()`
  ****************************************************************/
 function totalVideosDuration(channel) {
-  // Your code here
+  let totalTime = 0;
+  for (let i = 0; i < channel.videos.length; i++) {
+    totalTime += channel.videos[i].duration;
+  }
+  return totalTime;
 }
 
 /**************************************************************
@@ -103,7 +129,10 @@ function channelWithMostContent(channels) {
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
 function longestChannelName(channels) {
-  // Your code here
+  let namesLength = [];
+  for (i = 0; i < channels.length; i++) {
+    namesLength.push(channels.name.length);
+  }
 }
 
 module.exports = {
